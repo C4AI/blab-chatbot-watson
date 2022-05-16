@@ -13,7 +13,7 @@ BLAB.
   poetry run python -m pip install git+https://github.com/C4AI/blab-chatbot-watson
   ```
 - Open your controller settings file (`dev.py` or `prod.py`) and update
-  the `INSTALLED_BOTS` dictionary to include the Watson Assistant settings.
+  the `CHAT_INSTALLED_BOTS` dictionary to include the Watson Assistant settings.
   Example with two chatbots using the same Watson account:
 
   ```python
@@ -21,8 +21,9 @@ BLAB.
   _watson_api_key = '...'
   _watson_api_version = '...'
   _watson_dev_environment = True  # change to False in production
-
-  INSTALLED_BOTS.update(
+  
+  # if it has not been defined yet, change it to CHAT_INSTALLED_BOTS = { ... }
+  CHAT_INSTALLED_BOTS.update(
       {
           'Name of First Chatbot': (
               'blab_chatbot_watson.watson_assistant_bot',
