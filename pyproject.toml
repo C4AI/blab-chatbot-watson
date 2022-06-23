@@ -12,12 +12,12 @@ description = ""
 authors = ["C4AI"]
 readme = "README.md"
 
-[tool.poetry.scripts]
-c4aitm = 'blab_chatbot_watson:watson_assistant_bot.main'
-
 [tool.poetry.dependencies]
 python = "^3.10"
 ibm-watson = "^6.0.0"
+websocket-client = "^1.1.0"
+Flask = "^2.1.2"
+colorama = "^0.4.5"
 
 [tool.poetry.group.dev]
 optional = true

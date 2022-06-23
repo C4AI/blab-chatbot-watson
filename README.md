@@ -5,53 +5,78 @@ BLAB.
 
 ### Installation
 
-- Open a terminal window in the directory where
-  [BLAB Controller](../../../blab-controller) is installed.
-- Install this module in the same environment:
+- Clone or download this repository.
+- In the directory that contains this *README.md* file,
+  create a file *settings.ini* with the following contents and fill in the blanks:
+
+  ```ini
+  [blab_chatbot_watson]
+  service_url=https://(...).assistant.watson.cloud.ibm.com/instances/(...)
+  api_key=...
+  api_version=...
+  assistant_id=...
+  dev_environment=...
+  server_host=127.0.0.1
+  server_port=25227
+  ws_url=...
+  ```
+
+  The field `dev_environment` should be set to _True_ in develompent environments
+  and _False_ in production. The field `ws_url` must be the controller address
+  (e.g. _ws://localhost:8000_ in a development installation). The server host should be `server_host` should be *127.0.0.1* to accept only local connections from
+  the controller, and the port is arbitrary.
+
+- Install
+[Python 3.10](https://www.python.org/downloads/release/python-3100/)
+or newer.
+
+- Install [Poetry](https://python-poetry.org/) (version 1.2 or newer):
 
   ```shell
-  poetry run python -m pip install git+https://github.com/C4AI/blab-chatbot-watson
+  curl -sSL https://install.python-poetry.org | python3 - --preview
   ```
+  If *~/.local/bin* is not in `PATH`, add it as suggested by the output of Poetry installer.
+
+- Run Poetry to install the dependencies in a new virtual environment (_.venv_):
+
+  ```shell
+  POETRY_VIRTUALENVS_IN_PROJECT=true poetry install
+  ```
+
+- Enter the *src/* directory.
+
+- Optionally, run `poetry shell` to open a shell that uses the virtual environment, and
+  all the commands below can be executed on that shell without prefixing them with `poetry run`.
+
+- To open an interactive demo that answers questions, run:
+
+  ```shell
+  poetry run python -m blab_chatbot_watson answer
+  ```
+
+- In order to start the server that will interact with BLAB Controller, run:
+
+  ```shell
+  poetry run python -m blab_chatbot_watson startserver
+  ```
+
+
 - Open your controller settings file (`dev.py` or `prod.py`) and update
   the `CHAT_INSTALLED_BOTS` dictionary to include the Watson Assistant settings.
-  Example with two chatbots using the same Watson account:
+  Example:
 
   ```python
-  _watson_service_url = 'https://(...).assistant.watson.cloud.ibm.com/instances/(...)'
-  _watson_api_key = '...'
-  _watson_api_version = '...'
-  _watson_dev_environment = True  # change to False in production
-  
   # if it has not been defined yet, change it to CHAT_INSTALLED_BOTS = { ... }
   CHAT_INSTALLED_BOTS.update(
       {
-          'Name of First Chatbot': (
-              'blab_chatbot_watson.watson_assistant_bot',
-              'WatsonAssistantBot',
-              [],
-              {
-                  'service_url': _watson_service_url,
-                  'api_key': _watson_api_key,
-                  'api_version': _watson_api_version,
-                  'assistant_id': '...',
-                  'dev_environment': _watson_dev_environment,
-              },
-          ),
-          'Name of Second Chatbot': (
-              'blab_chatbot_watson.watson_assistant_bot',
-              'WatsonAssistantBot',
-              [],
-              {
-                  'service_url': _watson_service_url,
-                  'api_key': _watson_api_key,
-                  'api_version': _watson_api_version,
-                  'assistant_id': '...',
-                  'dev_environment': _watson_dev_environment,
-              },
+          'Chatbot Name Using Watson': (
+              'chat.bots',
+              'WebSocketExternalBot',
+              ['http://localhost:25227/'],
+              {},
           ),
       }
   )
   ```
-  Replace `...` with the appropriate values.
 
 - Restart the controller.
