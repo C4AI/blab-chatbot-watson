@@ -104,4 +104,6 @@ def start_server(host: str, port: int, bot: WatsonAssistantBot) -> None:
         bot: Watson bot
     """
     app._BOT = bot
-    app.run(host=host, port=port)
+    from waitress import serve
+
+    serve(app, host=host, port=port)

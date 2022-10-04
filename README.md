@@ -43,21 +43,19 @@ or newer.
   POETRY_VIRTUALENVS_IN_PROJECT=true poetry install
   ```
 
-- Enter the *src/* directory.
-
 - Optionally, run `poetry shell` to open a shell that uses the virtual environment, and
   all the commands below can be executed on that shell without prefixing them with `poetry run`.
 
 - To open an interactive demo that answers questions, run:
 
   ```shell
-  poetry run python -m blab_chatbot_watson answer
+  poetry run python run.py answer
   ```
 
 - In order to start the server that will interact with BLAB Controller, run:
 
   ```shell
-  poetry run python -m blab_chatbot_watson startserver
+  poetry run python run.py startserver
   ```
 
 
