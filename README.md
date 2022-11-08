@@ -33,7 +33,7 @@ or newer.
 - Install [Poetry](https://python-poetry.org/) (version 1.2 or newer):
 
   ```shell
-  curl -sSL https://install.python-poetry.org | python3 - --preview
+  curl -sSL https://install.python-poetry.org | python3 -
   ```
   If *~/.local/bin* is not in `PATH`, add it as suggested by the output of Poetry installer.
 
@@ -65,16 +65,9 @@ or newer.
 
   ```python
   # if it has not been defined yet, change it to CHAT_INSTALLED_BOTS = { ... }
-  CHAT_INSTALLED_BOTS.update(
-      {
-          'Chatbot Name Using Watson': (
-              'chat.bots',
-              'WebSocketExternalBot',
-              ['http://localhost:25227/'],
-              {},
-          ),
-      }
-  )
+  CHAT_INSTALLED_BOTS.update({
+      'Chatbot Name Using Watson': websocket_external_bot(url='http://localhost:25227/')
+  })
   ```
 
 - Restart the controller.
