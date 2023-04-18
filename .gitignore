@@ -1,4 +1,5 @@
-settings.ini
+settings*.py
+!settings_watson_TEMPLATE.py
 
 
 # Byte-compiled / optimized / DLL files
