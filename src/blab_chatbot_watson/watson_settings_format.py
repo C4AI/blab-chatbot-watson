@@ -5,7 +5,7 @@ See the file `settings_watson_TEMPLATE.py` for a template.
 
 from typing import Protocol, TypedDict, runtime_checkable
 
-from blab_chatbot_bot_client.settings_format import BlabBotClientSettings
+from blab_chatbot_bot_client.settings_format import BlabWebSocketBotClientSettings
 
 
 class WatsonSettings(TypedDict):
@@ -21,7 +21,7 @@ class WatsonSettings(TypedDict):
 
 
 @runtime_checkable
-class BlabWatsonClientSettings(BlabBotClientSettings, Protocol):
+class BlabWatsonClientSettings(BlabWebSocketBotClientSettings, Protocol):
     """This protocol should be implemented by the configuration file.
 
     It extends the parent protocol (`BlabBotClientSettings`)

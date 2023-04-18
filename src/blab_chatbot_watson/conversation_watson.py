@@ -18,10 +18,10 @@ from overrides import overrides
 from blab_chatbot_watson.watson_settings_format import BlabWatsonClientSettings
 
 
-class WatsonWebSocketBotClientConversation(WebSocketBotClientConversation):
+class WatsonWebSocketBotClientConversation(
+    WebSocketBotClientConversation[BlabWatsonClientSettings]
+):
     """Performs the communication between Watson Assistant and BLAB Controller."""
-
-    settings: BlabWatsonClientSettings
 
     def __init__(self, *args: Any, **kwargs: Any):
         """Create an instance."""
