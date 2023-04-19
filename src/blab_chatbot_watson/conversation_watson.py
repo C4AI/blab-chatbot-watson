@@ -1,4 +1,4 @@
-"""This module interacts with the APIs of Watson Assistant and BLAB Controller."""
+"""A module that interacts with the APIs of Watson Assistant and BLAB Controller."""
 from datetime import datetime
 from typing import Any
 
@@ -66,9 +66,11 @@ class WatsonWebSocketBotClientConversation(
         """Send a text message to the Watson bot (on behalf of the user).
 
         Args:
+        ----
             text: the message text
 
         Returns:
+        -------
             the list of raw messages returned by the bot
         """
         message_input = MessageInput(message_type="text", text=text)
@@ -91,9 +93,11 @@ class WatsonWebSocketBotClientConversation(
         """Process a message received from Watson bot.
 
         Args:
+        ----
             message: the message as received from Watson
 
         Returns:
+        -------
             a dictionary with the message that will be sent back to the user
         """
 
@@ -112,7 +116,7 @@ class WatsonWebSocketBotClientConversation(
                 return {
                     "type": MessageType.TEXT,
                     "text": message["title"],
-                    "options": list(map(lambda o: o["label"], message["options"])),
+                    "options": [o["label"] for o in message["options"]],
                 }
 
             case "image" | "video" | "audio":
@@ -141,7 +145,7 @@ class WatsonWebSocketBotClientConversation(
     def generate_answer(self, message: Message) -> list[OutgoingMessage]:
         if not message.text:
             return []
-        answers = [
+        return [
             OutgoingMessage(
                 **self.process_bot_message(data),
                 local_id=self.generate_local_id(),
@@ -149,4 +153,3 @@ class WatsonWebSocketBotClientConversation(
             )
             for data in self.send_message_to_watson(message.text)
         ]
-        return answers

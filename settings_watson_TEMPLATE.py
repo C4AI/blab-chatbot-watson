@@ -1,4 +1,4 @@
-"""This module contains settings for Watson bot client."""
+"""A module that contains settings for Watson bot client."""
 
 from blab_chatbot_bot_client.settings_format import BlabWebSocketConnectionSettings
 
@@ -22,19 +22,19 @@ BLAB_CONNECTION_SETTINGS: BlabWebSocketConnectionSettings = {
 WATSON_SETTINGS: WatsonSettings = {
 
     # Watson service URL (shown on Watson website below the API key):
-    'SERVICE_URL': 'https://(...).assistant.watson.cloud.ibm.com/instances/(...)',
+    "SERVICE_URL": "https://(...).assistant.watson.cloud.ibm.com/instances/(...)",
 
     # Watson API key (shown on Watson website above service URL):
-    'API_KEY': '...',
+    "API_KEY": "...",
 
     # Watson API version (see the official documentation
     # at <https://cloud.ibm.com/apidocs/assistant/assistant-v2>):
-    'API_VERSION': '2021-11-27',
+    "API_VERSION": "2021-11-27",
 
     # Id of the assistant (shown on Watson website after
     # launching the chatbot, under "draft environment"/"live environment" -
     # environment settings - API details):
-    'ASSISTANT_ID': '...',
+    "ASSISTANT_ID": "...",
 }
 
 # whether this is a development environment:

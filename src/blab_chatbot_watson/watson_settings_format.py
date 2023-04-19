@@ -1,4 +1,4 @@
-"""This module defines the expected format of the configuration file.
+"""A module that defines the expected format of the configuration file.
 
 See the file `settings_watson_TEMPLATE.py` for a template.
 """
@@ -22,7 +22,7 @@ class WatsonSettings(TypedDict):
 
 @runtime_checkable
 class BlabWatsonClientSettings(BlabWebSocketBotClientSettings, Protocol):
-    """This protocol should be implemented by the configuration file.
+    """A protocol that should be implemented by the configuration file.
 
     It extends the parent protocol (`BlabBotClientSettings`)
     with the inclusion of the `WATSON_SETTINGS` field.

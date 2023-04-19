@@ -1,4 +1,4 @@
-"""This module is called from the command-line."""
+"""A module that is called from the command-line."""
 
 from sys import argv
 
