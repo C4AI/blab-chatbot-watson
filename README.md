@@ -1,10 +1,5 @@
 # BLAB Chatbot - Watson Assistant
 
-This Python module allows the integration of Watson Assistant chatbots with
-BLAB.
-
-# BLAB Chatbot - OpenAI
-
 This Python module allows the integration of [Watson Assistant](https://cloud.ibm.com/apidocs/assistant-v2)
 models with
 [BLAB](../../../blab-controller).
