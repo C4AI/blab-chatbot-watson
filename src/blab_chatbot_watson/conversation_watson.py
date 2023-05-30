@@ -66,11 +66,9 @@ class WatsonWebSocketBotClientConversation(
         """Send a text message to the Watson bot (on behalf of the user).
 
         Args:
-        ----
             text: the message text
 
         Returns:
-        -------
             the list of raw messages returned by the bot
         """
         message_input = MessageInput(message_type="text", text=text)
@@ -93,11 +91,9 @@ class WatsonWebSocketBotClientConversation(
         """Process a message received from Watson bot.
 
         Args:
-        ----
             message: the message as received from Watson
 
         Returns:
-        -------
             a dictionary with the message that will be sent back to the user
         """
 
