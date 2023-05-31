@@ -1,8 +1,13 @@
 .. include:: title.rst
 
-This documentation was automatically generated using texts contained in docstrings.
+This documentation was automatically built using texts contained in docstrings.
 
-Use the menu on the left or one of the options below.
+The version hosted on GitHub Pages is generated after each commit on the main branch.
+In order to build these pages locally, install the dependencies for documentation
+generation (``poetry install --with docs``) and run Sphinx
+(``make -C docs html``).
+
+See the menu on the left and the options below.
 
 
 .. toctree::

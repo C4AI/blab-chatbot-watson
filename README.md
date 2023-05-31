@@ -16,3 +16,7 @@ models with
 
 - Follow [these instructions](../../../blab-chatbot-bot-client/blob/main/RUN.md) to execute the
   program.
+
+Documentation for the code and its API is hosted
+[on GitHub Pages](https://c4ai.github.io/blab-chatbot-watson/)
+alongside instructions on how to generate it locally.
